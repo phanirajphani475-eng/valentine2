@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine?</title>
+
+<style>
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ffe6eb, #ffd6e0);
+  font-family: Arial, sans-serif;
+}
+
+.box {
+  text-align: center;
+}
+
+h1 {
+  color: #e6005c;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  margin: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#yes {
+  background-color: #ff4d79;
+  color: white;
+}
+
+#no {
+  background-color: #999;
+  color: white;
+  position: absolute;
+}
+
+/* Love section */
+#love {
+  display: none;
+  margin-top: 25px;
+}
+
+/* ✨ Glow text */
+.glow {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ff1a66;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow:
+      0 0 5px #ff4d79,
+      0 0 10px #ff4d79,
+      0 0 20px #ff1a66;
+  }
+  to {
+    text-shadow:
+      0 0 10px #ff99b3,
+      0 0 20px #ff4d79,
+      0 0 40px #ff1a66;
+  }
+}
+
+.subtext {
+  color: #cc0044;
+  font-size: 18px;
+  margin-top: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h1>Will you be my Valentine, Sha? 💖</h1>
+
+  <button id="yes">Yes</button>
+  <button id="no">No</button>
+
+  <div id="love">
+    <div class="glow">I love you, Sha ❤️</div>
+    <div class="subtext">
+      You are my today, my tomorrow, and my always.
+    </div>
+  </div>
+</div>
+
+<script>
+const noButton = document.getElementById("no");
+const yesButton = document.getElementById("yes");
+const loveDiv = document.getElementById("love");
+
+noButton.addEventListener("mouseover", () => {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 50);
+  noButton.style.left = x + "px";
+  noButton.style.top = y + "px";
+});
+
+yesButton.addEventListener("click", () => {
+  loveDiv.style.display = "block";
+});
+</script>
+
+</body>
+</html>
