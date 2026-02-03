@@ -3,130 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <title>Valentine?</title>
+
 <style>
 body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #ffe6eb;
-    font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffe6eb;
+  font-family: Arial, sans-serif;
 }
 
 .box {
-    text-align: center;
+  text-align: center;
+  position: relative;
 }
 
 button {
-    font-size: 18px;
-    margin: 15px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    padding: 10px 20px;
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 #yes {
-    background-color: #f4d79;
-    color: white;
+  background-color: #ff4d79;
+  color: white;
 }
 
 #no {
-    background-color: #999;
-    color: white;
-    position: absolute;
+  background-color: #999;
+  color: white;
+  position: absolute;
 }
 
+/* Love section */
 #love {
-    display: none;
-    margin-top: 25px;
-    opacity: 0;
-    transition: opacity 1s ease;
+  display: none;
+  margin-top: 25px;
 }
 
 .glow {
-    font-size: 36px;
-    font-weight: bold;
-    color: #ff1a66;
-    animation: glow 1.5s ease-in-out infinite alternate;
+  font-size: 36px;
+  font-weight: bold;
+  color: #ff1a66;
+  animation: glow 1.5s ease-in-out infinite alternate;
 }
 
 @keyframes glow {
-    from {
-        text-shadow: 0 0 5px #f4d79,
-                     0 0 10px #f4d79,
-                     0 0 20px #ff1a66;
-    }
-    to {
-        text-shadow: 0 0 10px #ff99b3,
-                     0 0 20px #f4d79,
-                     0 0 40px #ff1a66;
-    }
+  from {
+    text-shadow: 0 0 5px #ff4d79, 0 0 10px #ff4d79;
+  }
+  to {
+    text-shadow: 0 0 20px #ff1a66, 0 0 40px #ff4d79;
+  }
 }
 
 .subtext {
-    color: #cc0044;
-    font-size: 18px;
-    margin-top: 10px;
+  color: #cc0044;
+  font-size: 18px;
+  margin-top: 10px;
 }
 
-#loveImage {
-    width: 220px;
-    border-radius: 20px;
-    display: none;
-    margin-top: 20px;
-    transform: translateY(-50px);
-    opacity: 0;
-    transition: transform 1s ease, opacity 1s ease;
+img {
+  width: 220px;
+  border-radius: 20px;
+  margin-top: 20px;
 }
 </style>
 </head>
+
 <body>
 
 <div class="box">
-    <h1>Will you be my Valentine, Sha? 💖</h1>
+  <h1>Will you be my Valentine? 💖</h1>
 
-    <button id="yes" onclick="showLove()">Yes</button>
-    <button id="no">No</button>
+  <button id="yes">Yes</button>
+  <button id="no">No</button>
 
-    <img id="loveImage" src="photo.jpg">
-
-    <div id="love">
-        <div class="glow">I love you, Sha ❤️</div>
-        <div class="subtext">
-            You are my today, my tomorrow, and my always.
-        </div>
+  <div id="love">
+    <img src="photo.jpg" alt="Love Image">
+    <div class="glow">I love you, Sha ❤️</div>
+    <div class="subtext">
+      You are my today, my tomorrow, and my always.
     </div>
+  </div>
 </div>
 
 <script>
+const yesButton = document.getElementById("yes");
 const noButton = document.getElementById("no");
 const loveDiv = document.getElementById("love");
-const loveImage = document.getElementById("loveImage");
 
-// "No" button avoids cursor
 noButton.addEventListener("mouseover", () => {
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
-    noButton.style.left = x + "px";
-    noButton.style.top = y + "px";
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 200 - 100;
+  noButton.style.transform = `translate(${x}px, ${y}px)`;
 });
 
-// Show love message and image with animation
-function showLove() {
-    // Show love div with fade-in
-    loveDiv.style.display = "block";
-    setTimeout(() => {
-        loveDiv.style.opacity = 1;
-    }, 50);
-
-    // Show image with slide-down effect
-    loveImage.style.display = "block";
-    setTimeout(() => {
-        loveImage.style.transform = "translateY(0)";
-        loveImage.style.opacity = 1;
-    }, 50);
-}
+yesButton.addEventListener("click", () => {
+  loveDiv.style.display = "block";
+});
 </script>
 
 </body>
